@@ -19,8 +19,6 @@ services:
     volumes:
       - ./LabelizerFrontend/:/
       - ./LabelizerFrontend/node_modules
-    command: >
-      sh -c "npm build"
 
   nginx:
     build: ./nginx
