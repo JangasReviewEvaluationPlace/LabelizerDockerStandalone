@@ -9,7 +9,7 @@ services:
       - 5000:5000
     env_file: ./LabelizerBackend/server/.env
 
-  reactblog:
+  react-fe:
     build:
       context: ./LabelizerFrontend
     environment: 
@@ -26,5 +26,3 @@ services:
       - ./LabelizerFrontend/build:/build
     ports:
       - 3000:3000
-    depends_on:
-      - djangoblog
