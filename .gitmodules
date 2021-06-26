@@ -1,0 +1,6 @@
+[submodule "LabelizerBackend"]
+	path = LabelizerBackend
+	url = https://github.com/JangasReviewEvaluationPlace/LabelizerBackend
+[submodule "LabelizerFrontend"]
+	path = LabelizerFrontend
+	url = https://github.com/JangasReviewEvaluationPlace/LabelizerFrontend

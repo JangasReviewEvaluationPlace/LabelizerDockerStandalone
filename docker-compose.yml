@@ -1,0 +1,30 @@
+version: "3"
+
+services:
+
+  flask-be:
+    build:
+      context: ./LabelizerBackend
+    ports:
+      - 5000:5000
+    env_file: ./LabelizerBackend/server/.env
+
+  reactblog:
+    build:
+      context: ./LabelizerFrontend
+    environment: 
+      - REACT_APP_API_URL=http://flask-be:5000/api
+    volumes:
+      - ./LabelizerFrontend/:/
+      - ./LabelizerFrontend/node_modules
+    command: >
+      sh -c "npm build"
+
+  nginx:
+    build: ./nginx
+    volumes:
+      - ./LabelizerFrontend/build:/build
+    ports:
+      - 3000:3000
+    depends_on:
+      - djangoblog
