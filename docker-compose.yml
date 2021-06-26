@@ -9,7 +9,7 @@ services:
       - 5000:5000
     env_file: ./LabelizerBackend/server/.env
     command: >
-      sh -c "poetry run gunicorn --bind 0.0.0.0:5000 conf/wsgi:app"
+      sh -c "poetry run gunicorn --bind 0.0.0.0:5000 conf.wsgi:app"
     volumes:
       - ./LabelizerBackend/server:/server
 
