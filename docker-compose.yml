@@ -17,7 +17,6 @@ services:
     environment: 
       - REACT_APP_API_URL=http://flask-be:5000/api
     volumes:
-      - ./LabelizerFrontend/:/
       - ./LabelizerFrontend/node_modules
 
   nginx:
