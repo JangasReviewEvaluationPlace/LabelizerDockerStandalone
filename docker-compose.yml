@@ -23,6 +23,6 @@ services:
   nginx:
     build: ./nginx
     volumes:
-      - ./LabelizerFrontend/build:/build
+      - ./LabelizerFrontend/build:/react/build
     ports:
       - 3000:3000
