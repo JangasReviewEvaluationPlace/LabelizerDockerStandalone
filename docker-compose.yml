@@ -16,8 +16,6 @@ services:
       context: ./LabelizerFrontend
     environment: 
       - REACT_APP_API_URL=http://flask-be:5000/api
-    volumes:
-      - ./LabelizerFrontend/node_modules
 
   nginx:
     build: ./nginx
@@ -25,3 +23,4 @@ services:
       - ./LabelizerFrontend/build:/react/build
     ports:
       - 3000:3000
+      - 5000:5000
