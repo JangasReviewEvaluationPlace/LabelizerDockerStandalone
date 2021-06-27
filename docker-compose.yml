@@ -3,24 +3,27 @@ version: "3"
 services:
 
   flask-be:
-    build:
-      context: ./LabelizerBackend
+    build: ./LabelizerBackend
     env_file: ./LabelizerBackend/server/.env
+    ports:
+      - 5000:5000
     command: >
       sh -c "poetry run gunicorn --bind 0.0.0.0:5000 conf.wsgi:app"
     volumes:
       - ./LabelizerBackend/server:/server
 
   react-fe:
-    build:
-      context: ./LabelizerFrontend
-    environment: 
-      - REACT_APP_API_URL=http://flask-be:5000/api
-
-  nginx:
-    build: ./nginx
-    volumes:
-      - ./LabelizerFrontend/build:/react/build
+    build: ./LabelizerFrontend
     ports:
       - 3000:3000
-      - 5000:5000
+    env_file: ./LabelizerFrontend/.env
+    command: >
+      npm start
+
+  # nginx:
+  #   build: ./nginx
+  #   volumes:
+  #     - ./LabelizerFrontend/build:/react/build
+  #   ports:
+  #     - 3000:3000
+  #     - 5000:5000
